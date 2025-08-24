@@ -31,6 +31,26 @@ for (let box of boxes) {
   })
 }
 
+
+const gameWinner = (winner) => {
+  console.log("winner", winner);
+  if(winner === 'O') {
+    userO++;
+    document.querySelector('#userO').innerText = userO;
+    console.log(userO);
+  } else {
+    userX++;
+    document.querySelector('#userX').innerText = userX;
+    console.log(userX);
+  }
+}
+
+const disableBox = () => {
+  for (let box of boxes) {
+    box.disabled = true;
+  }
+}
+
 const checkWinner = () => {
   for(let patten of winningPatten) {
     let pos1Val = boxes[patten[0]].innerText;
@@ -39,7 +59,9 @@ const checkWinner = () => {
 
     if(pos1Val !== '' && pos2Val !== '' && pos3Val !== '') {
       if(pos1Val === pos2Val && pos2Val === pos3Val) {
-        console.log("winner", pos1Val);
+        // console.log("winner", pos1Val);
+        disableBox();
+        gameWinner(pos1Val);
       }
     }
   }
