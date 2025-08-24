@@ -1,5 +1,7 @@
 const boxes = document.querySelectorAll(".box");
 
+const newBtn = document.querySelector('#newBtn');
+
 const winningPatten = [
   [0, 1, 2],
   [3, 4, 5],
@@ -47,6 +49,7 @@ const gameWinner = (winner) => {
 
 const disableBox = () => {
   for (let box of boxes) {
+    console.log(box);
     box.disabled = true;
   }
 }
@@ -66,3 +69,11 @@ const checkWinner = () => {
     }
   }
 }
+
+
+newBtn.addEventListener("click", () => {
+  for(let box of boxes) {
+    box.innerText = '';
+    box.disabled = false;
+  }
+})
