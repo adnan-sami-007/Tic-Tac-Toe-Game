@@ -2,6 +2,8 @@ const boxes = document.querySelectorAll(".box");
 
 const newBtn = document.querySelector('#newBtn');
 
+const resetBtn = document.querySelector('#resetBtn');
+
 const winningPatten = [
   [0, 1, 2],
   [3, 4, 5],
@@ -28,7 +30,6 @@ for (let box of boxes) {
       turnO = true;
     }
     box.disabled = true;
-    console.log("clicked");
     checkWinner();
   })
 }
@@ -49,7 +50,6 @@ const gameWinner = (winner) => {
 
 const disableBox = () => {
   for (let box of boxes) {
-    console.log(box);
     box.disabled = true;
   }
 }
@@ -62,7 +62,6 @@ const checkWinner = () => {
 
     if(pos1Val !== '' && pos2Val !== '' && pos3Val !== '') {
       if(pos1Val === pos2Val && pos2Val === pos3Val) {
-        // console.log("winner", pos1Val);
         disableBox();
         gameWinner(pos1Val);
       }
@@ -76,4 +75,8 @@ newBtn.addEventListener("click", () => {
     box.innerText = '';
     box.disabled = false;
   }
+});
+
+resetBtn.addEventListener("click", () => {
+  location.reload();
 })
